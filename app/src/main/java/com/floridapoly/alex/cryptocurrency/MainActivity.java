@@ -35,8 +35,14 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     private TextView valueXMRTextView, changeXMRTextView;
     private TextView valueXEMTextView, changeXEMTextView;
     private TextView valueEOSTextView, changeEOSTextView;
+    private TextView valueSTRATTextView, changeSTRATTextView;
+    private TextView valueUSDTTextView, changeUSDTTextView;
+    private TextView valueZECTextView, changeZECTextView;
+    private TextView valueICOTextView, changeICOTextView;
+    private TextView valueNEOTextView, changeNEOTextView;
+    private TextView valueBTSTextView, changeBTSTextView;
 
-    private CryptoCompareService BTCservice, ETHservice, DSHservice, LTCservice, XMRservice, XEMservice, EOSservice;
+    private CryptoCompareService BTCservice, ETHservice, DSHservice, LTCservice, XMRservice, XEMservice, EOSservice, STRATservice, USDTservice, ZECservice, ICOservice, NEOservice, BTSservice;
     //private ProgressBar dialog;
 
     @Override
@@ -70,6 +76,18 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         changeXEMTextView = findViewById(R.id.xem_Change);
         valueEOSTextView = findViewById(R.id.eosPrice);
         changeEOSTextView = findViewById(R.id.eos_Change);
+        valueSTRATTextView = findViewById(R.id.stratPrice);
+        changeSTRATTextView = findViewById(R.id.strat_Change);
+        valueUSDTTextView = findViewById(R.id.usdtPrice);
+        changeUSDTTextView = findViewById(R.id.usdt_Change);
+        valueZECTextView = findViewById(R.id.zecPrice);
+        changeZECTextView = findViewById(R.id.zec_Change);
+        valueICOTextView = findViewById(R.id.icoPrice);
+        changeICOTextView = findViewById(R.id.ico_Change);
+        valueNEOTextView = findViewById(R.id.neoPrice);
+        changeNEOTextView = findViewById(R.id.neo_Change);
+        valueBTSTextView = findViewById(R.id.btsPrice);
+        changeBTSTextView = findViewById(R.id.bts_Change);
 
 
         //services used for API - cryptocompare
@@ -80,6 +98,12 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         XMRservice = new CryptoCompareService(this);
         XEMservice = new CryptoCompareService(this);
         EOSservice = new CryptoCompareService(this);
+        STRATservice = new CryptoCompareService(this);
+        USDTservice = new CryptoCompareService(this);
+        ZECservice = new CryptoCompareService(this);
+        ICOservice = new CryptoCompareService(this);
+        NEOservice = new CryptoCompareService(this);
+        BTSservice = new CryptoCompareService(this);
 
         // Initial call to get API data for cryptocurrency using CryptoCompareService
         BTCservice.refreshCurrency("BTC");
@@ -89,6 +113,12 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         XMRservice.refreshCurrency("XMR");
         XEMservice.refreshCurrency("XEM");
         EOSservice.refreshCurrency("EOS");
+        STRATservice.refreshCurrency("STRAT");
+        USDTservice.refreshCurrency("USDT");
+        ZECservice.refreshCurrency("ZEC");
+        ICOservice.refreshCurrency("ICO");
+        NEOservice.refreshCurrency("NEO");
+        BTSservice.refreshCurrency("BTS");
 
         // Changes IMG based on spinner selection
         // TODO: used to run API query based on selection later
@@ -177,6 +207,30 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
             case ("EOS"):
                 valueEOSTextView.setText(currentValue.getValueUSD());
                 changeEOSTextView.setText(currentValue.getChange());
+                break;
+            case ("STRAT"):
+                valueSTRATTextView.setText(currentValue.getValueUSD());
+                changeSTRATTextView.setText(currentValue.getChange());
+                break;
+            case ("USDT"):
+                valueUSDTTextView.setText(currentValue.getValueUSD());
+                changeUSDTTextView.setText(currentValue.getChange());
+                break;
+            case ("ZEC"):
+                valueZECTextView.setText(currentValue.getValueUSD());
+                changeZECTextView.setText(currentValue.getChange());
+                break;
+            case ("ICO"):
+                valueICOTextView.setText(currentValue.getValueUSD());
+                changeUSDTTextView.setText(currentValue.getChange());
+                break;
+            case ("NEO"):
+                valueNEOTextView.setText(currentValue.getValueUSD());
+                changeNEOTextView.setText(currentValue.getChange());
+                break;
+            case ("BTS"):
+                valueBTSTextView.setText(currentValue.getValueUSD());
+                changeBTSTextView.setText(currentValue.getChange());
                 break;
         }
 

@@ -364,6 +364,277 @@
                     android:textSize="15sp" />
             </TableRow>
 
+            <TableRow
+                android:id="@+id/stratRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/strat_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/strat" />
+
+                <TextView
+                    android:id="@+id/strat_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="STRAT"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/stratPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/strat_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/usdtRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/usdt_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/usdt" />
+
+                <TextView
+                    android:id="@+id/usdt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="USDT"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/usdtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/usdt_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/zecRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/zec_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/zec" />
+
+                <TextView
+                    android:id="@+id/zec_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="ZEC"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/zecPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/zec_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/icoRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/ico_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/ico" />
+
+                <TextView
+                    android:id="@+id/ico_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="ICO"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/icoPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ico_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/neoRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/neo_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/neo" />
+
+                <TextView
+                    android:id="@+id/neo_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="NEO"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/neoPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/neo_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/btsRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/bts_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/bts" />
+
+                <TextView
+                    android:id="@+id/bts_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="BTS"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btsPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bts_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
         </TableLayout>
 
     </ScrollView>
