@@ -5,179 +5,322 @@
     android:layout_height="match_parent"
     android:background="@color/mainTxtClr">
 
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_height="match_parent">
 
-        <TableRow
-            android:id="@+id/titleRow"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:text="Crypto Market View"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/btcRow"
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/mainBG">
+            android:layout_alignParentTop="true">
 
-            <ImageView
-                android:id="@+id/btn_Icon"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_gravity="left"
-                android:src="@mipmap/btc" />
+            <TableRow
+                android:id="@+id/titleRow"
+                android:gravity="center">
 
-            <TextView
-                android:id="@+id/btc_Name"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:text="Crypto Market View"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/btcRow"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center"
-                android:text="BTC"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/btcPrice"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/btn_Icon"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/btc_Name"
-                android:layout_toLeftOf="@+id/btc_Change"
-                android:layout_toRightOf="@+id/btc_Name"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center_horizontal|center"
-                android:text="$ 0.00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/btc_Change"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center"
-                android:text="- 1.01 %"
-                android:textColor="@android:color/holo_blue_light"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/ethRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/btcRow"
-            android:background="@color/mainBG">
-
-            <ImageView
-                android:id="@+id/eth_icon"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_gravity="left"
-                android:src="@mipmap/eth" />
-
-            <TextView
-                android:id="@+id/eth_Name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="ETH"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/ethPrice"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="$ 0.00"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/eth_Change"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="- 2.03 %"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="17sp" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/dshRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:background="@color/mainBG">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@mipmap/dash" />
+                android:background="@color/mainBG">
 
-            <TextView
-                android:id="@+id/dsh_Name"
+                <ImageView
+                    android:id="@+id/btn_Icon"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left"
+                    android:src="@mipmap/btc" />
+
+                <TextView
+                    android:id="@+id/btc_Name"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:gravity="center"
+                    android:text="BTC"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btcPrice"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/btn_Icon"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/btc_Name"
+                    android:layout_toLeftOf="@+id/btc_Change"
+                    android:layout_toRightOf="@+id/btc_Name"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:gravity="center_horizontal|center"
+                    android:text="$ 0.00"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btc_Change"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:gravity="center"
+                    android:text="- 1.01 %"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/ethRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="DSH"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/btcRow"
+                android:background="@color/mainBG">
 
-            <TextView
-                android:id="@+id/dshPrice"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/eth_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left"
+                    android:src="@mipmap/eth" />
+
+                <TextView
+                    android:id="@+id/eth_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="ETH"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ethPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/eth_Change"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="- 2.03 %"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/dshRow"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="$ 0.00"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
 
-            <TextView
-                android:id="@+id/dsh_Change"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/dsh_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/dash" />
+
+                <TextView
+                    android:id="@+id/dsh_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="DSH"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dshPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dsh_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="+ 2.76%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/ltcRow"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@android:color/holo_blue_bright"
-                android:textSize="17sp" />
-        </TableRow>
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
 
-    </TableLayout>
+                <ImageView
+                    android:id="@+id/ltc_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/ltc" />
+
+                <TextView
+                    android:id="@+id/ltc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="LTC"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ltcPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ltc_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="- 0.09%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/xmrRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/xmr_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/xmr" />
+
+                <TextView
+                    android:id="@+id/xmr_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="XMR"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/xmrPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/xmr_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/xemRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/mainBG">
+
+                <ImageView
+                    android:id="@+id/xem_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/nem" />
+
+                <TextView
+                    android:id="@+id/xem_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="NEM"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/xemPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="$ 0.00"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/xem_Change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0.0%"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="15sp" />
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

@@ -27,10 +27,15 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     private TextView volumeTextView;
     private TextView maxSupplyTextView;
     private TextView lastTradeView;
-    private TextView exchangeTextView, valueBTCTextView, valueETHTextView, changeBTCTextView, changeETHTextView, valueDSHTextView;
-    private TextView changeDSHTextView;
+    private TextView exchangeTextView;
+    private TextView valueBTCTextView, changeBTCTextView;
+    private TextView valueETHTextView, changeETHTextView;
+    private TextView valueDSHTextView, changeDSHTextView;
+    private TextView valueLTCTextView, changeLTCTextView;
+    private TextView valueXMRTextView, changeXMRTextView;
+    private TextView valueXEMTextView, changeXEMTextView;
 
-    private CryptoCompareService BTCservice, ETHservice, LTCservice, DSHservice;
+    private CryptoCompareService BTCservice, ETHservice, DSHservice, LTCservice, XMRservice, XEMservice;
     //private ProgressBar dialog;
 
     @Override
@@ -39,8 +44,6 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         setContentView(R.layout.main_layout);
 
         //widget reference in xml layout
-        //final RelativeLayout relativeL = findViewById(R.id.relativeL);
-        //final ImageView currencyImage = findViewById(R.id.currencyImage);
 
         /**
         //instantiate variables used for API importing JSON files
@@ -58,19 +61,29 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         changeETHTextView = findViewById(R.id.eth_Change);
         valueDSHTextView = findViewById(R.id.dshPrice);
         changeDSHTextView = findViewById(R.id.dsh_Change);
-
+        valueLTCTextView = findViewById(R.id.ltcPrice);
+        changeLTCTextView = findViewById(R.id.ltc_Change);
+        valueXMRTextView = findViewById(R.id.xmrPrice);
+        changeXMRTextView = findViewById(R.id.xmr_Change);
+        valueXEMTextView = findViewById(R.id.xemPrice);
+        changeXEMTextView = findViewById(R.id.xem_Change);
 
 
         //services used for API - cryptocompare
         BTCservice = new CryptoCompareService(this);
         ETHservice = new CryptoCompareService(this);
-        LTCservice = new CryptoCompareService(this);
         DSHservice = new CryptoCompareService(this);
+        LTCservice = new CryptoCompareService(this);
+        XMRservice = new CryptoCompareService(this);
+        XEMservice = new CryptoCompareService(this);
 
         // Initial call to get API data for cryptocurrency using CryptoCompareService
         BTCservice.refreshCurrency("BTC");
         ETHservice.refreshCurrency("ETH");
         DSHservice.refreshCurrency("DSH");
+        LTCservice.refreshCurrency("LTC");
+        XMRservice.refreshCurrency("XMR");
+        XEMservice.refreshCurrency("XEM");
 
         // Changes IMG based on spinner selection
         // TODO: used to run API query based on selection later
@@ -144,7 +157,18 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
                 valueDSHTextView.setText(currentValue.getValueUSD());
                 changeDSHTextView.setText(currentValue.getChange());
                 break;
-
+            case ("Ł"):
+                valueLTCTextView.setText(currentValue.getValueUSD());
+                changeLTCTextView.setText(currentValue.getChange());
+                break;
+            case ("XMR"):
+                valueXMRTextView.setText(currentValue.getValueUSD());
+                changeXMRTextView.setText(currentValue.getChange());
+                break;
+            case ("XEM"):
+                valueXEMTextView.setText(currentValue.getValueUSD());
+                changeXEMTextView.setText(currentValue.getChange());
+                break;
         }
 
 
