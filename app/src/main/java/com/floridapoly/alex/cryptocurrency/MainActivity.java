@@ -39,8 +39,8 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         setContentView(R.layout.main_layout);
 
         //widget reference in xml layout
-        final RelativeLayout relativeL = findViewById(R.id.relativeL);
-        final ImageView currencyImage = findViewById(R.id.currencyImage);
+        //final RelativeLayout relativeL = findViewById(R.id.relativeL);
+        //final ImageView currencyImage = findViewById(R.id.currencyImage);
 
         /**
         //instantiate variables used for API importing JSON files
