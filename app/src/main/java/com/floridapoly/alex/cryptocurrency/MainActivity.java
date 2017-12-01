@@ -34,8 +34,9 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     private TextView valueLTCTextView, changeLTCTextView;
     private TextView valueXMRTextView, changeXMRTextView;
     private TextView valueXEMTextView, changeXEMTextView;
+    private TextView valueEOSTextView, changeEOSTextView;
 
-    private CryptoCompareService BTCservice, ETHservice, DSHservice, LTCservice, XMRservice, XEMservice;
+    private CryptoCompareService BTCservice, ETHservice, DSHservice, LTCservice, XMRservice, XEMservice, EOSservice;
     //private ProgressBar dialog;
 
     @Override
@@ -67,6 +68,8 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         changeXMRTextView = findViewById(R.id.xmr_Change);
         valueXEMTextView = findViewById(R.id.xemPrice);
         changeXEMTextView = findViewById(R.id.xem_Change);
+        valueEOSTextView = findViewById(R.id.eosPrice);
+        changeEOSTextView = findViewById(R.id.eos_Change);
 
 
         //services used for API - cryptocompare
@@ -76,6 +79,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         LTCservice = new CryptoCompareService(this);
         XMRservice = new CryptoCompareService(this);
         XEMservice = new CryptoCompareService(this);
+        EOSservice = new CryptoCompareService(this);
 
         // Initial call to get API data for cryptocurrency using CryptoCompareService
         BTCservice.refreshCurrency("BTC");
@@ -84,6 +88,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         LTCservice.refreshCurrency("LTC");
         XMRservice.refreshCurrency("XMR");
         XEMservice.refreshCurrency("XEM");
+        EOSservice.refreshCurrency("EOS");
 
         // Changes IMG based on spinner selection
         // TODO: used to run API query based on selection later
@@ -168,6 +173,10 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
             case ("XEM"):
                 valueXEMTextView.setText(currentValue.getValueUSD());
                 changeXEMTextView.setText(currentValue.getChange());
+                break;
+            case ("EOS"):
+                valueEOSTextView.setText(currentValue.getValueUSD());
+                changeEOSTextView.setText(currentValue.getChange());
                 break;
         }
 
