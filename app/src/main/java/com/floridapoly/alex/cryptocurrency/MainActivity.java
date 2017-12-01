@@ -26,12 +26,11 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     private TextView marketCapTextView;
     private TextView volumeTextView;
     private TextView maxSupplyTextView;
-    private TextView valueBTCTextView;
-    private TextView valueETHTextView;
     private TextView lastTradeView;
-    private TextView exchangeTextView;
+    private TextView exchangeTextView, valueBTCTextView, valueETHTextView, changeBTCTextView, changeETHTextView, valueDSHTextView;
+    private TextView changeDSHTextView;
 
-    private CryptoCompareService BTCservice, ETHservice;
+    private CryptoCompareService BTCservice, ETHservice, LTCservice, DSHservice;
     //private ProgressBar dialog;
 
     @Override
@@ -54,16 +53,24 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
          **/
 
         valueBTCTextView = findViewById(R.id.btcPrice);
+        changeBTCTextView = findViewById(R.id.btc_Change);
         valueETHTextView = findViewById(R.id.ethPrice);
+        changeETHTextView = findViewById(R.id.eth_Change);
+        valueDSHTextView = findViewById(R.id.dshPrice);
+        changeDSHTextView = findViewById(R.id.dsh_Change);
+
 
 
         //services used for API - cryptocompare
         BTCservice = new CryptoCompareService(this);
         ETHservice = new CryptoCompareService(this);
+        LTCservice = new CryptoCompareService(this);
+        DSHservice = new CryptoCompareService(this);
 
-        // Initial call to get API data for BTC using CryptoCompareService
+        // Initial call to get API data for cryptocurrency using CryptoCompareService
         BTCservice.refreshCurrency("BTC");
         ETHservice.refreshCurrency("ETH");
+        DSHservice.refreshCurrency("DSH");
 
         // Changes IMG based on spinner selection
         // TODO: used to run API query based on selection later
@@ -71,7 +78,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         cryptoCurrencyName = getResources().getStringArray(R.array.cryptoSelectName);
 
         /**
-        final Spinner cryptoSpinner = findViewById(R.id.cryptoSelect);
+         * final Spinner cryptoSpinner = findViewById(R.id.cryptoSelect);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, cryptoCurrency);
 
@@ -127,9 +134,15 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         switch (currentValue.getFromSymbol()) {
             case ("Ƀ"):
                 valueBTCTextView.setText(currentValue.getValueUSD());
+                changeBTCTextView.setText(currentValue.getChange());
                 break;
             case ("Ξ"):
                 valueETHTextView.setText(currentValue.getValueUSD());
+                changeETHTextView.setText(currentValue.getChange());
+                break;
+            case ("DSH"):
+                valueDSHTextView.setText(currentValue.getValueUSD());
+                changeDSHTextView.setText(currentValue.getChange());
                 break;
 
         }

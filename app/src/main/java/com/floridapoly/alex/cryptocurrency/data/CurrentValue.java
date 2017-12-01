@@ -17,12 +17,23 @@ public class CurrentValue implements JSONHandler {
     private String lastTradeId;
     private String exchange;
 
+
+
+    private String change;
+
     public String getFromSymbol() {
         return fromSymbol;
     }
 
     public void setFromSymbol(String fromSymbol) {
         this.fromSymbol = fromSymbol;
+}
+    public String getChange() {
+        return change;
+    }
+
+    public void setChange(String change) {
+        this.change = change;
     }
     public String getExchange() {
         return exchange;
@@ -50,6 +61,7 @@ public class CurrentValue implements JSONHandler {
     @Override
     public void populate(JSONObject data)
     {
+        change = data.optString("CHANGE24HOUR");
         fromSymbol = data.optString("FROMSYMBOL");
         valueUSD = data.optString("PRICE");
         marketCap = data.optString("MKTCAP");
