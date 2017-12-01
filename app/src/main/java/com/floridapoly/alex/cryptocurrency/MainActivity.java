@@ -222,7 +222,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
                 break;
             case ("ICO"):
                 valueICOTextView.setText(currentValue.getValueUSD());
-                changeUSDTTextView.setText(currentValue.getChange());
+                changeICOTextView.setText(currentValue.getChange());
                 break;
             case ("NEO"):
                 valueNEOTextView.setText(currentValue.getValueUSD());
@@ -248,5 +248,14 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     public void serviceFailure(Exception exception) {
         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
 
+    }
+
+    public void refreshButton(View view) {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
     }
 }

@@ -635,6 +635,23 @@
                     android:textSize="15sp" />
             </TableRow>
 
+            <TableRow
+                android:id="@+id/refBtnRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/refBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:onClick="refreshButton"
+                    android:background="@drawable/button_selector"
+                    android:text="REFRESH" />
+            </TableRow>
+
         </TableLayout>
 
     </ScrollView>

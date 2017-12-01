@@ -7,4 +7,10 @@
     <color name="mainTxtClr">#0c2137</color>
     <color name="positiveColor">#008000</color>
     <color name="negativeColor">#B22222</color>
+
+    <!-- Button Colors -->
+    <color name="green_temp">#ff00ddff</color>
+    <color name="green_dark">#ff00ddff</color>
+    <color name="bright_green">#bb2c5c6c</color>
+    <color name="button_green">#bb2c5c6c</color>
 </resources>
