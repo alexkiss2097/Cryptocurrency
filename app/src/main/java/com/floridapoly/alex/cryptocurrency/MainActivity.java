@@ -26,22 +26,24 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     private TextView marketCapTextView;
     private TextView volumeTextView;
     private TextView maxSupplyTextView;
-    private TextView valueTextView;
+    private TextView valueBTCTextView;
+    private TextView valueETHTextView;
     private TextView lastTradeView;
     private TextView exchangeTextView;
 
-    private CryptoCompareService service;
+    private CryptoCompareService BTCservice, ETHservice;
     //private ProgressBar dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_start);
+        setContentView(R.layout.main_layout);
 
         //widget reference in xml layout
         final RelativeLayout relativeL = findViewById(R.id.relativeL);
         final ImageView currencyImage = findViewById(R.id.currencyImage);
 
+        /**
         //instantiate variables used for API importing JSON files
         marketCapTextView = findViewById(R.id.valMarketCap);
         volumeTextView = findViewById(R.id.valVolume);
@@ -49,18 +51,26 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         valueTextView = findViewById(R.id.valUSD);
         lastTradeView = findViewById(R.id.lastTradeIDValue);
         exchangeTextView = findViewById(R.id.exchangeValue);
+         **/
+
+        valueBTCTextView = findViewById(R.id.btcPrice);
+        valueETHTextView = findViewById(R.id.ethPrice);
 
 
         //services used for API - cryptocompare
-        service = new CryptoCompareService(this);
+        BTCservice = new CryptoCompareService(this);
+        ETHservice = new CryptoCompareService(this);
 
         // Initial call to get API data for BTC using CryptoCompareService
-        service.refreshCurrency("BTC");
+        BTCservice.refreshCurrency("BTC");
+        ETHservice.refreshCurrency("ETH");
 
         // Changes IMG based on spinner selection
         // TODO: used to run API query based on selection later
         cryptoCurrency = getResources().getStringArray(R.array.cryptoSelect);
         cryptoCurrencyName = getResources().getStringArray(R.array.cryptoSelectName);
+
+        /**
         final Spinner cryptoSpinner = findViewById(R.id.cryptoSelect);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, cryptoCurrency);
@@ -87,7 +97,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {}
-        });
+        }); **/
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -114,12 +124,22 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     @Override
     public void serviceSuccess(CurrentValue currentValue) {
         //Toast.makeText(getBaseContext(), currentValue.getValueUSD(), Toast.LENGTH_LONG).show();
-        valueTextView.setText(currentValue.getValueUSD());
-        marketCapTextView.setText(currentValue.getMarketCap());
-        maxSupplyTextView.setText(currentValue.getMaxSupply());
-        volumeTextView.setText(currentValue.getVolume());
-        exchangeTextView.setText((currentValue.getExchange()));
-        lastTradeView.setText(currentValue.getLastTradeId());
+        switch (currentValue.getFromSymbol()) {
+            case ("Ƀ"):
+                valueBTCTextView.setText(currentValue.getValueUSD());
+                break;
+            case ("Ξ"):
+                valueETHTextView.setText(currentValue.getValueUSD());
+                break;
+
+        }
+
+
+        //marketCapTextView.setText(currentValue.getMarketCap());
+        //maxSupplyTextView.setText(currentValue.getMaxSupply());
+        //volumeTextView.setText(currentValue.getVolume());
+        //exchangeTextView.setText((currentValue.getExchange()));
+        //lastTradeView.setText(currentValue.getLastTradeId());
 
 
     }

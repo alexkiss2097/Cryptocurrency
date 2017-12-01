@@ -10,12 +10,20 @@ import org.json.JSONObject;
 public class CurrentValue implements JSONHandler {
 
     private String valueUSD;
+    private String fromSymbol;
     private String marketCap;
     private String maxSupply;
     private String volume;
     private String lastTradeId;
     private String exchange;
 
+    public String getFromSymbol() {
+        return fromSymbol;
+    }
+
+    public void setFromSymbol(String fromSymbol) {
+        this.fromSymbol = fromSymbol;
+    }
     public String getExchange() {
         return exchange;
     }
@@ -42,6 +50,7 @@ public class CurrentValue implements JSONHandler {
     @Override
     public void populate(JSONObject data)
     {
+        fromSymbol = data.optString("FROMSYMBOL");
         valueUSD = data.optString("PRICE");
         marketCap = data.optString("MKTCAP");
         maxSupply = data.optString("VOLUME24HOURTO");
