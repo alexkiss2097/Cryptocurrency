@@ -20,6 +20,9 @@ import com.floridapoly.alex.cryptocurrency.data.CurrentValue;
 import com.floridapoly.alex.cryptocurrency.service.CryptoCompareService;
 import com.floridapoly.alex.cryptocurrency.service.CryptocurrencyCallback;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends Activity implements CryptocurrencyCallback {
 
     String[] cryptoCurrency, cryptoCurrencyName;
@@ -42,15 +45,51 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     private TextView valueICOTextView, changeICOTextView;
     private TextView valueNEOTextView, changeNEOTextView;
     private TextView valueBTSTextView, changeBTSTextView;
+    Long sysTime = System.currentTimeMillis()/1000;
+    Date timeStamp = new Date(sysTime*1000L);
+    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss z");
+    String formattedTimeStamp = sdf.format(timeStamp);
 
-    private CryptoCompareService BTCservice, ETHservice, DSHservice, LTCservice, XMRservice, XEMservice, EOSservice, STRATservice, USDTservice, ZECservice, ICOservice, NEOservice, BTSservice;
-    //private ProgressBar dialog;
+    private CryptoCompareService BTCservice, ETHservice,
+            DSHservice, LTCservice, XMRservice, XEMservice,
+            EOSservice, STRATservice, USDTservice, ZECservice,
+            ICOservice, NEOservice, BTSservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+        assignVariables();
+        refreshCurrency();
+        // Initial call to get API data for cryptocurrency using CryptoCompareService
+        // Changes IMG based on spinner selection
+        cryptoCurrency = getResources().getStringArray(R.array.cryptoSelect);
+        cryptoCurrencyName = getResources().getStringArray(R.array.cryptoSelectName);
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void assignVariables() {
         valueBTCTextView = findViewById(R.id.btcPrice);
         changeBTCTextView = findViewById(R.id.btc_Change);
         valueETHTextView = findViewById(R.id.ethPrice);
@@ -78,7 +117,6 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         valueBTSTextView = findViewById(R.id.btsPrice);
         changeBTSTextView = findViewById(R.id.bts_Change);
 
-
         //services used for API - cryptocompare
         BTCservice = new CryptoCompareService(this);
         ETHservice = new CryptoCompareService(this);
@@ -93,8 +131,9 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         ICOservice = new CryptoCompareService(this);
         NEOservice = new CryptoCompareService(this);
         BTSservice = new CryptoCompareService(this);
+    }
 
-        // Initial call to get API data for cryptocurrency using CryptoCompareService
+    public void refreshCurrency() {
         BTCservice.refreshCurrency("BTC");
         ETHservice.refreshCurrency("ETH");
         DSHservice.refreshCurrency("DSH");
@@ -108,61 +147,6 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         ICOservice.refreshCurrency("ICO");
         NEOservice.refreshCurrency("NEO");
         BTSservice.refreshCurrency("BTS");
-
-        // Changes IMG based on spinner selection
-        // TODO: used to run API query based on selection later
-        cryptoCurrency = getResources().getStringArray(R.array.cryptoSelect);
-        cryptoCurrencyName = getResources().getStringArray(R.array.cryptoSelectName);
-
-        /**
-         * final Spinner cryptoSpinner = findViewById(R.id.cryptoSelect);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, cryptoCurrency);
-
-        cryptoSpinner.setAdapter(adapter);
-        cryptoSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                int index = arg0.getSelectedItemPosition();
-
-                // TODO: currently passed variable currency from spinner object through service refresh works and pulls data
-
-                String currencyString = cryptoCurrency[index];
-                String currencyStringName = cryptoCurrencyName[index];
-                String currImg = currencyString.toLowerCase();
-                int resID = getResources().getIdentifier(currImg, "mipmap", getPackageName());
-                currencyImage.setImageResource(resID);
-                service.refreshCurrency(currencyString);
-
-                // Troubleshooting resID assignment and imageView reassignment based on user choice on spinner
-                //Toast.makeText(getBaseContext(), "Current resID: " + resID + " Current Img: " + currImg, Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(getBaseContext(), "You've selected " + currencyStringName, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {}
-        }); **/
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -255,11 +239,8 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     }
 
     public void refreshButton(View view) {
-        Intent intent = getIntent();
-        overridePendingTransition(0, 0);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        finish();
-        overridePendingTransition(0, 0);
-        startActivity(intent);
+        refreshCurrency();
+        Toast refreshedMsg = new Toast(this);
+        refreshedMsg.makeText(MainActivity.this, "Information updated at \n" + formattedTimeStamp, Toast.LENGTH_LONG).show();
     }
 }

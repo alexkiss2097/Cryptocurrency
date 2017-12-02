@@ -5,54 +5,30 @@
     android:layout_height="match_parent"
     android:background="@drawable/blackbgstars2">
 
-    <ScrollView
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50dp"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="Crypto Market View"
+        android:textColor="@color/green_dark"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title"
+        android:layout_marginBottom="50dp">
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
             android:layout_alignParentTop="true">
-
-            <TableRow
-                android:id="@+id/titleRow"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="75dp"
-                    android:layout_height="60dp"
-                    android:gravity="right|center"
-                    android:text="Crypto"
-                    android:textColor="@color/green_temp"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/title3"
-                    android:layout_width="78dp"
-                    android:layout_height="60dp"
-                    android:gravity="center"
-                    android:text="Market"
-                    android:textColor="@color/green_temp"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/title2"
-                    android:layout_width="67dp"
-                    android:layout_height="60dp"
-                    android:gravity="left|center"
-                    android:text="View"
-                    android:textColor="@color/green_temp"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </TableRow>
 
             <TableRow
                 android:id="@+id/btcRow"
@@ -61,7 +37,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/btn_Icon"
@@ -123,7 +100,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/btcRow"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/eth_icon"
@@ -166,7 +144,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/dsh_icon"
@@ -212,7 +191,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/ltc_icon"
@@ -257,7 +237,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/xmr_icon"
@@ -302,7 +283,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/xem_icon"
@@ -347,7 +329,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/eos_icon"
@@ -392,7 +375,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/strat_icon"
@@ -437,7 +421,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/usdt_icon"
@@ -483,7 +468,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/zec_icon"
@@ -528,7 +514,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/ico_icon"
@@ -573,7 +560,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/neo_icon"
@@ -618,7 +606,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="@color/mainBG">
+                android:background="@color/mainBG"
+                android:gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/bts_icon"
@@ -658,25 +647,19 @@
                     android:textSize="15sp" />
             </TableRow>
 
-            <TableRow
-                android:id="@+id/refBtnRow"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/refBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/button_selector"
-                    android:onClick="refreshButton"
-                    android:text="REFRESH" />
-            </TableRow>
-
         </TableLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/refBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="false"
+        android:background="@drawable/button_selector"
+        android:onClick="refreshButton"
+        android:text="REFRESH"
+        android:textAlignment="center" />
 
 </RelativeLayout>
