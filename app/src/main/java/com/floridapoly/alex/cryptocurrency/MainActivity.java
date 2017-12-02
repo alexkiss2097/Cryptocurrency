@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -58,8 +60,8 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         setContentView(R.layout.main_layout);
         assignVariables();
         refreshCurrency();
-        // Initial call to get API data for cryptocurrency using CryptoCompareService
-        // Changes IMG based on spinner selection
+
+
         cryptoCurrency = getResources().getStringArray(R.array.cryptoSelect);
         cryptoCurrencyName = getResources().getStringArray(R.array.cryptoSelectName);
 
@@ -86,6 +88,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         return super.onOptionsItemSelected(item);
     }
 
+    //initialize variables used to pass data from api to layout
     public void assignVariables() {
         valueBTCTextView = findViewById(R.id.btcPrice);
         changeBTCTextView = findViewById(R.id.btc_Change);
@@ -130,6 +133,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         BTSservice = new CryptoCompareService(this);
     }
 
+    //calls api for each cryptocurrency
     public void refreshCurrency() {
         BTCservice.refreshCurrency("BTC");
         ETHservice.refreshCurrency("ETH");
@@ -146,6 +150,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         BTSservice.refreshCurrency("BTS");
     }
 
+    //Get current server time for refresh data
     public String getServerTime() {
         Long sysTime = System.currentTimeMillis()/1000;
         Date timeStamp = new Date(sysTime*1000L);
@@ -242,10 +247,29 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
 
     }
 
+    public void popupWindow(String currency) {
+        Intent intent = new Intent(MainActivity.this, PopWindow.class);
+        intent.putExtra("passedCurrency", currency);
+        startActivity(intent);
+    }
+
     public void refreshButton(View view) {
         refreshCurrency();
         Toast refreshedMsg = new Toast(this);
         String timeStamp = getServerTime();
         refreshedMsg.makeText(MainActivity.this, "Information updated at \n" + timeStamp, Toast.LENGTH_LONG).show();
+    }
+
+    public void detailedPopup(View view) {
+        switch(view.getId())
+        {
+            case R.id.btcRow:
+                popupWindow("BTC");
+                break;
+            case R.id.ethRow:
+                popupWindow( "ETH");
+                break;
+
+        }
     }
 }

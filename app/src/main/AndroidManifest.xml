@@ -31,6 +31,9 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+        <activity android:name=".PopWindow"
+            android:theme="@style/AppTheme.customTheme">
+        </activity>
     </application>
 
 </manifest>
