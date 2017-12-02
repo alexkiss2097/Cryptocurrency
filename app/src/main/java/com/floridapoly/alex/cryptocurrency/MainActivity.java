@@ -2,6 +2,7 @@ package com.floridapoly.alex.cryptocurrency;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,18 +50,6 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
-
-        //widget reference in xml layout
-
-        /**
-        //instantiate variables used for API importing JSON files
-        marketCapTextView = findViewById(R.id.valMarketCap);
-        volumeTextView = findViewById(R.id.valVolume);
-        maxSupplyTextView = findViewById(R.id.valMaxSupply);
-        valueTextView = findViewById(R.id.valUSD);
-        lastTradeView = findViewById(R.id.lastTradeIDValue);
-        exchangeTextView = findViewById(R.id.exchangeValue);
-         **/
 
         valueBTCTextView = findViewById(R.id.btcPrice);
         changeBTCTextView = findViewById(R.id.btc_Change);
@@ -178,59 +167,74 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
 
     @Override
     public void serviceSuccess(CurrentValue currentValue) {
+        currentValue.setDifferenceColor();
         //Toast.makeText(getBaseContext(), currentValue.getValueUSD(), Toast.LENGTH_LONG).show();
+        int valueColor = currentValue.getDifferenceColor();
         switch (currentValue.getFromSymbol()) {
-            case ("Ƀ"):
+            case ("BTC"):
                 valueBTCTextView.setText(currentValue.getValueUSD());
                 changeBTCTextView.setText(currentValue.getChange());
+                changeBTCTextView.setTextColor(valueColor);
                 break;
-            case ("Ξ"):
+            case ("ETH"):
                 valueETHTextView.setText(currentValue.getValueUSD());
                 changeETHTextView.setText(currentValue.getChange());
+                changeETHTextView.setTextColor(valueColor);
                 break;
             case ("DSH"):
                 valueDSHTextView.setText(currentValue.getValueUSD());
                 changeDSHTextView.setText(currentValue.getChange());
+                changeDSHTextView.setTextColor(valueColor);
                 break;
-            case ("Ł"):
+            case ("LTC"):
                 valueLTCTextView.setText(currentValue.getValueUSD());
                 changeLTCTextView.setText(currentValue.getChange());
+                changeLTCTextView.setTextColor(valueColor);
                 break;
             case ("XMR"):
                 valueXMRTextView.setText(currentValue.getValueUSD());
                 changeXMRTextView.setText(currentValue.getChange());
+                changeXMRTextView.setTextColor(valueColor);
                 break;
             case ("XEM"):
                 valueXEMTextView.setText(currentValue.getValueUSD());
                 changeXEMTextView.setText(currentValue.getChange());
+                changeXEMTextView.setTextColor(valueColor);
                 break;
             case ("EOS"):
                 valueEOSTextView.setText(currentValue.getValueUSD());
                 changeEOSTextView.setText(currentValue.getChange());
+                changeEOSTextView.setTextColor(valueColor);
                 break;
             case ("STRAT"):
                 valueSTRATTextView.setText(currentValue.getValueUSD());
                 changeSTRATTextView.setText(currentValue.getChange());
+                changeSTRATTextView.setTextColor(valueColor);
                 break;
             case ("USDT"):
                 valueUSDTTextView.setText(currentValue.getValueUSD());
                 changeUSDTTextView.setText(currentValue.getChange());
+                changeUSDTTextView.setTextColor(valueColor);
                 break;
             case ("ZEC"):
                 valueZECTextView.setText(currentValue.getValueUSD());
                 changeZECTextView.setText(currentValue.getChange());
+                changeZECTextView.setTextColor(valueColor);
                 break;
             case ("ICO"):
                 valueICOTextView.setText(currentValue.getValueUSD());
                 changeICOTextView.setText(currentValue.getChange());
+                changeICOTextView.setTextColor(valueColor);
                 break;
             case ("NEO"):
                 valueNEOTextView.setText(currentValue.getValueUSD());
                 changeNEOTextView.setText(currentValue.getChange());
+                changeNEOTextView.setTextColor(valueColor);
                 break;
             case ("BTS"):
                 valueBTSTextView.setText(currentValue.getValueUSD());
                 changeBTSTextView.setText(currentValue.getChange());
+                changeBTSTextView.setTextColor(valueColor);
                 break;
         }
 
