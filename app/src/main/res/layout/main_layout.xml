@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainTxtClr">
+    android:background="@drawable/blackbgstars2">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,17 +18,40 @@
 
             <TableRow
                 android:id="@+id/titleRow"
-                android:gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="120dp"
+                    android:layout_width="75dp"
                     android:layout_height="60dp"
-                    android:gravity="center"
-                    android:text="Crypto Market View"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:gravity="right|center"
+                    android:text="Crypto"
+                    android:textColor="@color/green_temp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/title3"
+                    android:layout_width="78dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:text="Market"
+                    android:textColor="@color/green_temp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="67dp"
+                    android:layout_height="60dp"
+                    android:gravity="left|center"
+                    android:text="View"
+                    android:textColor="@color/green_temp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
             </TableRow>
 
             <TableRow
@@ -645,10 +668,10 @@
                     android:id="@+id/refBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:onClick="refreshButton"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/button_selector"
+                    android:onClick="refreshButton"
                     android:text="REFRESH" />
             </TableRow>
 
