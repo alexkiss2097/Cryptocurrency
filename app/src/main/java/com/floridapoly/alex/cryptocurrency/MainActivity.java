@@ -45,10 +45,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     private TextView valueICOTextView, changeICOTextView;
     private TextView valueNEOTextView, changeNEOTextView;
     private TextView valueBTSTextView, changeBTSTextView;
-    Long sysTime = System.currentTimeMillis()/1000;
-    Date timeStamp = new Date(sysTime*1000L);
-    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss z");
-    String formattedTimeStamp = sdf.format(timeStamp);
+
 
     private CryptoCompareService BTCservice, ETHservice,
             DSHservice, LTCservice, XMRservice, XEMservice,
@@ -149,6 +146,13 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         BTSservice.refreshCurrency("BTS");
     }
 
+    public String getServerTime() {
+        Long sysTime = System.currentTimeMillis()/1000;
+        Date timeStamp = new Date(sysTime*1000L);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss z");
+        String formattedTimeStamp = sdf.format(timeStamp);
+        return formattedTimeStamp;
+    }
     @Override
     public void serviceSuccess(CurrentValue currentValue) {
         currentValue.setDifferenceColor();
@@ -241,6 +245,7 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
     public void refreshButton(View view) {
         refreshCurrency();
         Toast refreshedMsg = new Toast(this);
-        refreshedMsg.makeText(MainActivity.this, "Information updated at \n" + formattedTimeStamp, Toast.LENGTH_LONG).show();
+        String timeStamp = getServerTime();
+        refreshedMsg.makeText(MainActivity.this, "Information updated at \n" + timeStamp, Toast.LENGTH_LONG).show();
     }
 }

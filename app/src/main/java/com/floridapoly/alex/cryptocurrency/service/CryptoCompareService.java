@@ -1,5 +1,6 @@
 package com.floridapoly.alex.cryptocurrency.service;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.AsyncTask;
 
@@ -32,6 +33,7 @@ public class CryptoCompareService {
         return currency;
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void refreshCurrency(final String currency) {
         new AsyncTask<String, Void, String>() {
             @Override
