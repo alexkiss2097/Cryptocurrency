@@ -2,8 +2,11 @@ package com.floridapoly.alex.cryptocurrency;
 
 import android.app.Activity;
 import android.drm.DrmStore;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,8 +41,23 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
     private TextView marketCap, popupTitle, circSupply, dayVolume, currencyPrice;
     private TextView percChange1d, percChange24h, percChange7d;
     private String currency;
+    private int timeStampsAdded = 0;
+    GraphView currencyGraph;
     LineGraphSeries<DataPoint> dataSeries;
-    List<String> graphYList = new ArrayList<String>();
+    Double graphY;
+    Date graphX;
+    Long sysTime = (System.currentTimeMillis()/1000) - 1259200;
+    Long sysTime1 = (System.currentTimeMillis()/1000) - 572800;
+    Long sysTime2 = System.currentTimeMillis()/1000;
+    Date[] graphXarray = new Date[] {
+            new Date(sysTime*1000L), new Date(sysTime1*1000L), new Date(sysTime2*1000L)
+    };
+    String[] timeStamps = new String[] {
+            String.valueOf(sysTime*1000L),
+            String.valueOf(sysTime1*1000L),
+            String.valueOf(sysTime2*1000L)
+    };
+    double[] graphYArray = new double[] { 0,0,0 };
 
 
     @Override
@@ -61,18 +79,6 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         currencyPrice = findViewById(R.id.popupPriceTV);
         percChange24h = findViewById(R.id.percChange24h);
         percChange1d = findViewById(R.id.percChange1h);
-        Date graphX;
-        Long sysTime = System.currentTimeMillis()/1000 - 259200;
-        Long sysTime1 = System.currentTimeMillis()/1000 - 172800;
-        Long sysTime2 = System.currentTimeMillis()/1000;
-        Date[] graphXarray = new Date[] {
-                new Date(sysTime*1000L), new Date(sysTime1*1000L), new Date(sysTime2*1000L)
-        };
-        String[] timeStamps = new String[] {
-                String.valueOf(sysTime*1000L),
-                String.valueOf(sysTime1*1000L),
-                String.valueOf(sysTime2*1000L)
-        };
 
         currency = getIntent().getStringExtra("passedCurrency");
 
@@ -84,41 +90,44 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         int height = dm.heightPixels;
         getWindow().setLayout((int)(width*0.9), (int)(height*0.9));
 
-
-        Toast toast = new Toast(this);
-        //toast.makeText(PopWindow.this, "Time: " + new Date(sysTime*1000L - 216000), toast.LENGTH_LONG).show();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss z");
-        toast.makeText(PopWindow.this, "graphXarray :" + timeStamps[1] + " " + currency, toast.LENGTH_LONG).show();
         timeStampService.refreshTimestamp(currency, timeStamps[0]);
         timeStampService.refreshTimestamp(currency, timeStamps[1]);
         timeStampService.refreshTimestamp(currency, timeStamps[2]);
 
-        Iterator<String> it = graphYList.iterator();
-        Double graphY = 0.0;
-
-        GraphView currencyGraph = (GraphView) findViewById(R.id.graphView);
-        dataSeries = new LineGraphSeries<DataPoint>();
-        for (int i = 0; i < 3; i++) {
-            // values of the currency over the last 3 days
-            while(it.hasNext()) {
-                graphY = Double.parseDouble(it.next());
-            }
-            graphX = graphXarray[i];
-
-            //dates for the last 3 days based on time queried
-            dataSeries.appendData(new DataPoint(graphX, graphY), true, 3);
-        }
-        currencyGraph.addSeries(dataSeries);
-
+        currencyGraph = (GraphView) findViewById(R.id.graphView);
         currencyGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
         currencyGraph.getGridLabelRenderer().setNumHorizontalLabels(3);
 
     }
 
-    public void timeStampServiceSuccess(CurrentValue currentValue) {
-        graphYList.add(currentValue.getTimeStamp());
-        Toast.makeText(this, currentValue.getTimeStamp(), Toast.LENGTH_LONG).show();
+    public void upDate(View view) {
+        fillGraph();
     }
+
+    public void timeStampServiceSuccess(CurrentValue currentValue) {
+        graphYArray[timeStampsAdded] = Double.valueOf(currentValue.getTimeStamp());
+        timeStampsAdded += 1;
+        //Toast.makeText(this, String.valueOf(graphYArray[0] + " " + graphYArray[1] + " " + graphYArray[2]), Toast.LENGTH_LONG).show();
+    }
+
+    public void fillGraph() {
+        currencyGraph.removeAllSeries();
+        dataSeries = new LineGraphSeries<DataPoint>();
+        for (int i = 0; i < 3; i++) {
+            // values of the currency over the last 3 days
+            graphY = graphYArray[i];
+            graphX = graphXarray[i];
+
+            //dates for the last 3 days based on time queried
+            dataSeries.appendData(new DataPoint(graphX, graphY), true, 3);
+        }
+        dataSeries.setDataPointsRadius(10);
+        dataSeries.setThickness(8);
+        dataSeries.setColor(Color.GREEN);
+        dataSeries.setDrawDataPoints(true);
+        currencyGraph.addSeries(dataSeries);
+    }
+
     public void timeStampServiceFailure(Exception exception) {
         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
     }

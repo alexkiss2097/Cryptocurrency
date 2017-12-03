@@ -3,7 +3,10 @@ package com.floridapoly.alex.cryptocurrency.service;
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.widget.PopupWindow;
+import android.widget.Toast;
 
+import com.floridapoly.alex.cryptocurrency.PopWindow;
 import com.floridapoly.alex.cryptocurrency.data.CurrentValue;
 
 import org.json.JSONException;
@@ -78,7 +81,7 @@ public class CryptoTimestamp {
                     JSONObject data = new JSONObject(s);
 
                     //needs to point at JSOn object - traversing the returned json data
-                    JSONObject queryResults = data;
+                    JSONObject queryResults = data.optJSONObject(currency);
 
                     // Option to check if there is an error with symbol - would only apply if we implemented
                     // a feature where a user types the symbol of the currency.
