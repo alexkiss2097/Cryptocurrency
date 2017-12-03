@@ -33,10 +33,14 @@
         </activity>
         <activity
             android:name=".PopWindow"
-            android:theme="@style/AppTheme.customTheme"></activity>
+            android:theme="@style/AppTheme.customTheme" />
 
         <service
             android:name=".service.CryptoCompareServiceDisplay"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.CryptoTimestampCallback"
             android:enabled="true"
             android:exported="true"></service>
     </application>

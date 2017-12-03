@@ -21,6 +21,11 @@ public class CurrentValue implements JSONHandler {
     private String currency;
     private String supply;
     private String oneDChange;
+    private String timeStamp;
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
 
     public String getSupply() { return supply; }
 
@@ -100,5 +105,6 @@ public class CurrentValue implements JSONHandler {
         volume = data.optString("SUPPLY");
         lastTradeId = data.optString("LASTTRADEID");
         exchange = data.optString("LASTMARKET");
+        timeStamp = data.optString("USD");
     }
 }
