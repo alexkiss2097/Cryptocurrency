@@ -124,7 +124,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="ETH"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -135,7 +135,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -144,8 +144,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -173,7 +174,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="DSH"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -184,7 +185,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -194,8 +195,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
             </TableRow>
 
@@ -224,7 +226,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="LTC"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -235,7 +237,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -245,8 +247,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -274,7 +277,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="XMR"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -285,7 +288,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -295,8 +298,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -324,7 +328,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="NEM"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -335,7 +339,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -345,8 +349,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -374,7 +379,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="EOS"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -385,7 +390,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -395,8 +400,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -424,7 +430,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="STRAT"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -435,7 +441,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -445,8 +451,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -474,7 +481,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="USDT"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -485,7 +492,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -495,8 +502,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
             </TableRow>
 
@@ -525,7 +533,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="ZEC"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -536,7 +544,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -546,8 +554,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -575,7 +584,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="ICO"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -586,7 +595,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -596,8 +605,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -625,7 +635,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="NEO"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -636,7 +646,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -646,8 +656,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -675,7 +686,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="BTS"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -686,7 +697,7 @@
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -696,8 +707,9 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textSize="15sp" />
+                    android:textColor="@color/grey_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </TableRow>
 
         </TableLayout>
@@ -709,7 +721,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="false"
+        android:layout_alignParentStart="true"
         android:background="@drawable/button_selector"
         android:onClick="refreshButton"
         android:text="REFRESH"

@@ -18,6 +18,7 @@ import com.floridapoly.alex.cryptocurrency.service.CryptoTimestamp;
 import com.floridapoly.alex.cryptocurrency.service.CryptoTimestampCallback;
 import com.floridapoly.alex.cryptocurrency.service.CryptocurrencyCallback;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -66,7 +67,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
 
         setContentView(R.layout.popupwindow);
         initializeVariables();
-
+        //fillGraph();
     }
 
     public void initializeVariables() {
@@ -123,7 +124,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         }
         dataSeries.setDataPointsRadius(10);
         dataSeries.setThickness(8);
-        dataSeries.setColor(Color.GREEN);
+        dataSeries.setColor(Color.GRAY);
         dataSeries.setDrawDataPoints(true);
         currencyGraph.addSeries(dataSeries);
     }
@@ -140,6 +141,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         dayVolume.setText("24 Hour Volume : " + currentValue.getMaxSupply());
         percChange24h.setText("Percent Change(24h) : " + currentValue.getChange());
         percChange1d.setText("Percent Change(Day) : " + currentValue.getOneDayChange());
+        //percChange7d.setText("Percent Change (Week) : " + currentValue.getOneWeekChange());
 
     }
 
