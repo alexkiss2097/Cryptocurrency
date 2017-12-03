@@ -163,70 +163,72 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
         currentValue.setDifferenceColor();
         //Toast.makeText(getBaseContext(), currentValue.getValueUSD(), Toast.LENGTH_LONG).show();
         int valueColor = currentValue.getDifferenceColor();
+        String usdValue = "$" + currentValue.getValueUSD();
+        String usdChange = currentValue.getChange();
         switch (currentValue.getFromSymbol()) {
             case ("BTC"):
-                valueBTCTextView.setText(currentValue.getValueUSD());
-                changeBTCTextView.setText(currentValue.getChange());
+                valueBTCTextView.setText(usdValue);
+                changeBTCTextView.setText(usdChange);
                 changeBTCTextView.setTextColor(valueColor);
                 break;
             case ("ETH"):
-                valueETHTextView.setText(currentValue.getValueUSD());
-                changeETHTextView.setText(currentValue.getChange());
+                valueETHTextView.setText(usdValue);
+                changeETHTextView.setText(usdChange);
                 changeETHTextView.setTextColor(valueColor);
                 break;
             case ("DSH"):
-                valueDSHTextView.setText(currentValue.getValueUSD());
-                changeDSHTextView.setText(currentValue.getChange());
+                valueDSHTextView.setText(usdValue);
+                changeDSHTextView.setText(usdChange);
                 changeDSHTextView.setTextColor(valueColor);
                 break;
             case ("LTC"):
-                valueLTCTextView.setText(currentValue.getValueUSD());
-                changeLTCTextView.setText(currentValue.getChange());
+                valueLTCTextView.setText(usdValue);
+                changeLTCTextView.setText(usdChange);
                 changeLTCTextView.setTextColor(valueColor);
                 break;
             case ("XMR"):
-                valueXMRTextView.setText(currentValue.getValueUSD());
-                changeXMRTextView.setText(currentValue.getChange());
+                valueXMRTextView.setText(usdValue);
+                changeXMRTextView.setText(usdChange);
                 changeXMRTextView.setTextColor(valueColor);
                 break;
             case ("XEM"):
-                valueXEMTextView.setText(currentValue.getValueUSD());
-                changeXEMTextView.setText(currentValue.getChange());
+                valueXEMTextView.setText(usdValue);
+                changeXEMTextView.setText(usdChange);
                 changeXEMTextView.setTextColor(valueColor);
                 break;
             case ("EOS"):
-                valueEOSTextView.setText(currentValue.getValueUSD());
-                changeEOSTextView.setText(currentValue.getChange());
+                valueEOSTextView.setText(usdValue);
+                changeEOSTextView.setText(usdChange);
                 changeEOSTextView.setTextColor(valueColor);
                 break;
             case ("STRAT"):
-                valueSTRATTextView.setText(currentValue.getValueUSD());
-                changeSTRATTextView.setText(currentValue.getChange());
+                valueSTRATTextView.setText(usdValue);
+                changeSTRATTextView.setText(usdChange);
                 changeSTRATTextView.setTextColor(valueColor);
                 break;
             case ("USDT"):
-                valueUSDTTextView.setText(currentValue.getValueUSD());
-                changeUSDTTextView.setText(currentValue.getChange());
+                valueUSDTTextView.setText(usdValue);
+                changeUSDTTextView.setText(usdChange);
                 changeUSDTTextView.setTextColor(valueColor);
                 break;
             case ("ZEC"):
-                valueZECTextView.setText(currentValue.getValueUSD());
-                changeZECTextView.setText(currentValue.getChange());
+                valueZECTextView.setText(usdValue);
+                changeZECTextView.setText(usdChange);
                 changeZECTextView.setTextColor(valueColor);
                 break;
             case ("ICO"):
-                valueICOTextView.setText(currentValue.getValueUSD());
-                changeICOTextView.setText(currentValue.getChange());
+                valueICOTextView.setText(usdValue);
+                changeICOTextView.setText(usdChange);
                 changeICOTextView.setTextColor(valueColor);
                 break;
             case ("NEO"):
-                valueNEOTextView.setText(currentValue.getValueUSD());
-                changeNEOTextView.setText(currentValue.getChange());
+                valueNEOTextView.setText(usdValue);
+                changeNEOTextView.setText(usdChange);
                 changeNEOTextView.setTextColor(valueColor);
                 break;
             case ("BTS"):
-                valueBTSTextView.setText(currentValue.getValueUSD());
-                changeBTSTextView.setText(currentValue.getChange());
+                valueBTSTextView.setText(usdValue);
+                changeBTSTextView.setText(usdChange);
                 changeBTSTextView.setTextColor(valueColor);
                 break;
         }
@@ -269,7 +271,39 @@ public class MainActivity extends Activity implements CryptocurrencyCallback {
             case R.id.ethRow:
                 popupWindow( "ETH");
                 break;
-
+            case R.id.dshRow:
+                popupWindow( "DSH");
+                break;
+            case R.id.btsRow:
+                popupWindow("BTS");
+                break;
+            case R.id.eosRow:
+                popupWindow("EOS");
+                break;
+            case R.id.ltcRow:
+                popupWindow("LTC");
+                break;
+            case R.id.icoRow:
+                popupWindow("ICO");
+                break;
+            case R.id.neoRow:
+                popupWindow("NEO");
+                break;
+            case R.id.stratRow:
+                popupWindow("STRAT");
+                break;
+            case R.id.usdtRow:
+                popupWindow("USDT");
+                break;
+            case R.id.xemRow:
+                popupWindow("XEM");
+                break;
+            case R.id.xmrRow:
+                popupWindow("XMR");
+                break;
+            case R.id.zecRow:
+                popupWindow("ZEC");
+                break;
         }
     }
 }

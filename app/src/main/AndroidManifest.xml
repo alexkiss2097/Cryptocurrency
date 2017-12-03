@@ -31,9 +31,14 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".PopWindow"
-            android:theme="@style/AppTheme.customTheme">
-        </activity>
+        <activity
+            android:name=".PopWindow"
+            android:theme="@style/AppTheme.customTheme"></activity>
+
+        <service
+            android:name=".service.CryptoCompareServiceDisplay"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

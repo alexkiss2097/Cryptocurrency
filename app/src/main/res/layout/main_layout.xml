@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/blackbgstars2">
+    android:background="@drawable/blackbgstars">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/button_selector"
+        android:background="@color/mainTxtClr"
         android:gravity="center"
         android:text="Crypto Market View"
-        android:textColor="@color/green_dark"
+        android:textColor="@color/green_temp"
         android:textSize="35sp"
         android:textStyle="bold" />
 
@@ -36,11 +36,12 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
                 android:gravity="center_horizontal"
-                android:onClick="detailedPopup">
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/btn_Icon"
@@ -54,11 +55,11 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
-                    android:fontFamily="sans-serif-smallcaps"
+                    android:fontFamily="serif"
                     android:gravity="center"
                     android:text="BTC"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -68,6 +69,7 @@
                     android:layout_height="match_parent"
                     android:layout_alignBottom="@+id/btn_Icon"
                     android:layout_alignParentTop="true"
+                    android:layout_marginLeft="40dp"
                     android:layout_toEndOf="@+id/btc_Name"
                     android:layout_toLeftOf="@+id/btc_Change"
                     android:layout_toRightOf="@+id/btc_Name"
@@ -75,7 +77,7 @@
                     android:gravity="center_horizontal|center"
                     android:text="$ 0.00"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="@android:color/holo_blue_bright"
+                    android:textColor="@color/grey_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -87,9 +89,9 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
-                    android:textColor="@android:color/holo_blue_light"
+                    android:textColor="@color/grey_dark"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -102,9 +104,12 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/btcRow"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
                 android:gravity="center_horizontal"
-                android:onClick="detailedPopup">
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/eth_icon"
@@ -127,6 +132,7 @@
                     android:id="@+id/ethPrice"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -136,7 +142,7 @@
                 <TextView
                     android:id="@+id/eth_Change"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -146,9 +152,12 @@
                 android:id="@+id/dshRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/dsh_icon"
@@ -172,6 +181,7 @@
                     android:id="@+id/dshPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -182,7 +192,7 @@
                     android:id="@+id/dsh_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -193,9 +203,12 @@
                 android:id="@+id/ltcRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/ltc_icon"
@@ -219,6 +232,7 @@
                     android:id="@+id/ltcPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -229,7 +243,7 @@
                     android:id="@+id/ltc_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -239,9 +253,12 @@
                 android:id="@+id/xmrRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/xmr_icon"
@@ -265,6 +282,7 @@
                     android:id="@+id/xmrPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -275,7 +293,7 @@
                     android:id="@+id/xmr_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -285,9 +303,12 @@
                 android:id="@+id/xemRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/xem_icon"
@@ -311,6 +332,7 @@
                     android:id="@+id/xemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -321,7 +343,7 @@
                     android:id="@+id/xem_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -331,9 +353,12 @@
                 android:id="@+id/eosRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/eos_icon"
@@ -357,6 +382,7 @@
                     android:id="@+id/eosPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -367,7 +393,7 @@
                     android:id="@+id/eos_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -377,9 +403,12 @@
                 android:id="@+id/stratRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/strat_icon"
@@ -403,6 +432,7 @@
                     android:id="@+id/stratPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -413,7 +443,7 @@
                     android:id="@+id/strat_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -423,9 +453,12 @@
                 android:id="@+id/usdtRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/usdt_icon"
@@ -449,6 +482,7 @@
                     android:id="@+id/usdtPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -459,7 +493,7 @@
                     android:id="@+id/usdt_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -470,9 +504,12 @@
                 android:id="@+id/zecRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/zec_icon"
@@ -496,6 +533,7 @@
                     android:id="@+id/zecPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -506,7 +544,7 @@
                     android:id="@+id/zec_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -516,9 +554,12 @@
                 android:id="@+id/icoRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/ico_icon"
@@ -542,6 +583,7 @@
                     android:id="@+id/icoPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -552,7 +594,7 @@
                     android:id="@+id/ico_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -562,9 +604,12 @@
                 android:id="@+id/neoRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/neo_icon"
@@ -588,6 +633,7 @@
                     android:id="@+id/neoPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -598,7 +644,7 @@
                     android:id="@+id/neo_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -608,9 +654,12 @@
                 android:id="@+id/btsRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/mainBG"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:onClick="detailedPopup"
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/bts_icon"
@@ -634,6 +683,7 @@
                     android:id="@+id/btsPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:text="$ 0.00"
                     android:textColor="@android:color/holo_blue_bright"
@@ -644,7 +694,7 @@
                     android:id="@+id/bts_Change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="right|center"
                     android:text="0.0%"
                     android:textColor="@android:color/holo_blue_bright"
                     android:textSize="15sp" />
@@ -657,7 +707,7 @@
     <Button
         android:id="@+id/refBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="false"
         android:background="@drawable/button_selector"

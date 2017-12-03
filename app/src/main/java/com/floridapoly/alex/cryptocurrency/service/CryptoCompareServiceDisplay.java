@@ -20,11 +20,11 @@ import java.net.URLConnection;
  * Cryptocurrency project - Mobile Dev
  */
 
-public class CryptoCompareService {
+public class CryptoCompareServiceDisplay {
     private CryptocurrencyCallback callback;
     private Exception error;
 
-    public CryptoCompareService(CryptocurrencyCallback callback) {
+    public CryptoCompareServiceDisplay(CryptocurrencyCallback callback) {
         this.callback = callback;
     }
 
@@ -75,7 +75,7 @@ public class CryptoCompareService {
                     JSONObject data = new JSONObject(s);
 
                     //needs to point at JSOn object - traversing the returned json data
-                    JSONObject queryResults = data.optJSONObject("RAW").optJSONObject(currency).optJSONObject("USD");
+                    JSONObject queryResults = data.optJSONObject("DISPLAY").optJSONObject(currency).optJSONObject("USD");
 
                     // Option to check if there is an error with symbol - would only apply if we implemented
                     // a feature where a user types the symbol of the currency.

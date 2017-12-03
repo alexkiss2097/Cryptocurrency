@@ -18,6 +18,11 @@ public class CurrentValue implements JSONHandler {
     private String exchange;
     private int differenceColor;
     private String change;
+    private String currency;
+    private String supply;
+    private String oneDChange;
+
+    public String getSupply() { return supply; }
 
     public String getFromSymbol() {
         return fromSymbol;
@@ -31,9 +36,16 @@ public class CurrentValue implements JSONHandler {
         this.fromSymbol = fromSymbol;
     }
 
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
     public String getChange() {
         //return Math.round(Float.parseFloat(change));
-        return String.format("$%.2f", Double.parseDouble(change));
+        return String.format("%.2f", Double.parseDouble(change)) + " %";
     }
 
     public void setChange(String change) {
@@ -70,10 +82,17 @@ public class CurrentValue implements JSONHandler {
         return volume;
     }
 
+    public String getOneDayChange() {
+        return String.format("%.2f", Double.parseDouble(oneDChange)) + " %";
+    }
+
     @Override
     public void populate(JSONObject data)
     {
-        change = data.optString("CHANGE24HOUR");
+        oneDChange = data.optString("CHANGEPCTDAY");
+        supply = data.optString("SUPPLY");
+        currency = data.optString("FROMSYMBOL");
+        change = data.optString("CHANGEPCT24HOUR");
         fromSymbol = data.optString("FROMSYMBOL");
         valueUSD = data.optString("PRICE");
         marketCap = data.optString("MKTCAP");
