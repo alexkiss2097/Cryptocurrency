@@ -73,7 +73,6 @@
                     android:layout_toEndOf="@+id/btc_Name"
                     android:layout_toLeftOf="@+id/btc_Change"
                     android:layout_toRightOf="@+id/btc_Name"
-                    android:fontFamily="sans-serif-smallcaps"
                     android:gravity="center_horizontal|center"
                     android:text="$ 0.00"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
