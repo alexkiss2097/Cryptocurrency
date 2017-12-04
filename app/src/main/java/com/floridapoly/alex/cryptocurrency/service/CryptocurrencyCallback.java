@@ -8,6 +8,7 @@ import com.floridapoly.alex.cryptocurrency.data.CurrentValue;
  */
 
 public interface CryptocurrencyCallback {
+    //passes the information retrieved and parsed by the services into the currentValue class
     void serviceSuccess(CurrentValue currentValue);
     void serviceFailure(Exception exception);
 

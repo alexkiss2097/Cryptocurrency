@@ -49,46 +49,35 @@ public class CryptoTimestamp {
 
                 try {
                     URL url = new URL(endpoint);
-
                     URLConnection connection = url.openConnection();
-
                     InputStream  inputStream = connection.getInputStream();
-
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                     StringBuilder result = new StringBuilder();
                     String line;
-
                     // While there is information to read
                     while((line = reader.readLine()) != null) {
                         result.append(line);
                     }
-
                     return result.toString();
-
                 } catch (Exception e) {
                     error = e;
                 }
-
                 return null;
             }
 
             @Override
             protected void onPostExecute(String s) {
-
-
-
                 if (s == null && error != null) {
                     callback.timeStampServiceFailure(error);
                     return;
                 }
                 try {
                     JSONObject data = new JSONObject(s);
-
-
                     //needs to point at JSOn object - traversing the returned json data
                     JSONArray queryResults = data.getJSONArray("Data");
                     JSONTime = new String[queryResults.length()];
                     JSONValue = new String[queryResults.length()];
+                    //create two string arrays one of timestamps and one of the values at that timestamp
                     for (int i = 0; i < queryResults.length(); i++) {
                         JSONObject mJSONObjProp = queryResults.getJSONObject(i);
                         JSONTime[i] = mJSONObjProp.getString("time");
@@ -97,20 +86,8 @@ public class CryptoTimestamp {
                 } catch (JSONException e) {
                     callback.timeStampServiceFailure(e);
                 }
-                    //JSONObject queryResults = data.optJSONObject(currency);
-
-                    // Option to check if there is an error with symbol - would only apply if we implemented
-                    // a feature where a user types the symbol of the currency.
-                    /*
-                    if (response == "Error") {
-                        callback.serviceFailure(new CurrencyException("Invalid Cryptocurrency symbol: " + currency));
-                        return;
-                    }
-                    */
-
-                    //TODO: Check if there is any data that is empty when returned from API.
-
                     CurrentValue currentValue = new CurrentValue();
+                    //pass the string arrays to the populate interface to assign them to the currentValue class.
                     currentValue.populate(JSONTime, JSONValue);
 
                     //if connection is successful and there are no errors, pass data to callback success

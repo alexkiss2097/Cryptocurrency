@@ -1,34 +1,23 @@
 package com.floridapoly.alex.cryptocurrency;
 
 import android.app.Activity;
-import android.drm.DrmStore;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.floridapoly.alex.cryptocurrency.data.CurrentValue;
-import com.floridapoly.alex.cryptocurrency.service.CryptoCompareService;
 import com.floridapoly.alex.cryptocurrency.service.CryptoCompareServiceDisplay;
 import com.floridapoly.alex.cryptocurrency.service.CryptoTimestamp;
 import com.floridapoly.alex.cryptocurrency.service.CryptoTimestampCallback;
 import com.floridapoly.alex.cryptocurrency.service.CryptocurrencyCallback;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by Adam Seevers 2017.
@@ -50,15 +39,11 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
     private arrayVariable aV = new arrayVariable();
     private Integer pointsToPlot;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.popupwindow);
         initializeVariables();
-
     }
 
     public void initializeVariables() {
@@ -71,10 +56,12 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         currencyPrice = findViewById(R.id.popupPriceTV);
         percChange1d = findViewById(R.id.percChange1h);
 
+        //grabbing currency from the clicked currency row to use for api query
         currency = getIntent().getStringExtra("passedCurrency");
 
         apiService.refreshCurrency(currency);
 
+        //update the size of the window based on get device screen size
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
@@ -89,25 +76,27 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         currencyGraph = (GraphView) findViewById(R.id.graphView);
         currencyGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         currencyGraph.getGridLabelRenderer().setHorizontalAxisTitle("");
-
-
     }
 
+    //updates chart to display historical data for 5 days before current date
     public void setToFiveDays(View view) {
         pointsToPlot = 5;
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
     }
 
+    //updates chart to display historical data for a month before current date
     public void setToThirtyDays(View view) {
         pointsToPlot = 32;
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
     }
 
+    //updates chart to display historical data for a year before current date
     public void setToOneYear(View view) {
         pointsToPlot = 365;
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
     }
 
+    //when the time stamp service is successful
     public void timeStampServiceSuccess(CurrentValue currentValue) {
         aV.setVariable(false);
 
@@ -121,12 +110,12 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         fillGraph(timeStamps, curVal);
     }
 
+    //populate graph with data grabbed from API
     public void fillGraph(String[] timeStamps, String[] values) {
         currencyGraph.removeAllSeries();
         currencyGraph.getGridLabelRenderer().setNumHorizontalLabels(pointsToPlot);
         dataSeries = new LineGraphSeries<DataPoint>();
         for (int i = 0; i < timeStamps.length; i++) {
-            // values of the currency over the last 3 days
             graphY = Double.valueOf(values[i]);
             graphX = new Date(Long.valueOf(timeStamps[i])*1000);
             dataSeries.appendData(new DataPoint(graphX, graphY), true, pointsToPlot);
@@ -138,10 +127,12 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         currencyGraph.addSeries(dataSeries);
     }
 
+    //catch exception if service fails
     public void timeStampServiceFailure(Exception exception) {
         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
     }
 
+    //grabs currency details information from api - fills information to the popupwindow
     public void serviceSuccess(CurrentValue currentValue) {
         popupTitle.setText(currency);
         currencyPrice.setText("Price : " + currentValue.getValueUSD());
@@ -151,6 +142,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         percChange1d.setText("Percent Change(Day) : " + currentValue.getOneDayChange());
     }
 
+    //catch exception if service fails
     public void serviceFailure(Exception exception) {
         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
     }

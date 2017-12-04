@@ -1,6 +1,5 @@
 package com.floridapoly.alex.cryptocurrency.data;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -99,6 +98,7 @@ public class CurrentValue implements JSONHandler {
         return String.format("%.2f", Double.parseDouble(oneDChange)) + " %";
     }
 
+    //fills data from the parsed JSONObject received from api query
     @Override
     public void populate(JSONObject data)
     {
@@ -116,6 +116,7 @@ public class CurrentValue implements JSONHandler {
         timeStamp = data.optString("USD");
     }
 
+    //overload populate for other API service that gets historical data.
     public void populate(String[] time, String[] value) {
         timeArray = time;
         valueArray = value;
