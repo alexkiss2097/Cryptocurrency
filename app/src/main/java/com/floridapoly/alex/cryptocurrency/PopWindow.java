@@ -82,7 +82,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         getWindow().setLayout((int)(width*0.9), (int)(height*0.9));
 
         //adjust api query to how many points to add to graph
-        pointsToPlot = 36;
+        pointsToPlot = 32;
         //query API for historical data on each requested timeStamp
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
 
@@ -99,7 +99,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
     }
 
     public void setToThirtyDays(View view) {
-        pointsToPlot = 36;
+        pointsToPlot = 32;
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
     }
 
