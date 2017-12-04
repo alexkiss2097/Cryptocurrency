@@ -47,8 +47,9 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
     LineGraphSeries<DataPoint> dataSeries;
     Double graphY;
     Date graphX;
-    Long sysTime = (System.currentTimeMillis()/1000) - 1259200;
-    Long sysTime1 = (System.currentTimeMillis()/1000) - 572800;
+    arrayVariable aV = new arrayVariable();
+    Long sysTime = (System.currentTimeMillis()/1000) - 11259200;
+    Long sysTime1 = (System.currentTimeMillis()/1000) - 1572800;
     Long sysTime2 = System.currentTimeMillis()/1000;
     Date[] graphXarray = new Date[] {
             new Date(sysTime*1000L), new Date(sysTime1*1000L), new Date(sysTime2*1000L)
@@ -68,7 +69,17 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         setContentView(R.layout.popupwindow);
         initializeVariables();
         //fillGraph();
+
+        aV.setVariable(graphYArray[0] == 0);
+
+        aV.setListener(new arrayVariable.ChangeListener() {
+            @Override
+            public void onChange() {
+                fillGraph();
+            }
+        });
     }
+
 
     public void initializeVariables() {
         apiService = new CryptoCompareServiceDisplay(this);
@@ -101,11 +112,13 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
 
     }
 
+
     public void upDate(View view) {
         fillGraph();
     }
 
     public void timeStampServiceSuccess(CurrentValue currentValue) {
+        aV.setVariable(false);
         graphYArray[timeStampsAdded] = Double.valueOf(currentValue.getTimeStamp());
         timeStampsAdded += 1;
         //Toast.makeText(this, String.valueOf(graphYArray[0] + " " + graphYArray[1] + " " + graphYArray[2]), Toast.LENGTH_LONG).show();
