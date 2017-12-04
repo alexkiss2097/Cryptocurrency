@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.floridapoly.alex.cryptocurrency.PopWindow;
 import com.floridapoly.alex.cryptocurrency.data.CurrentValue;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,24 +27,25 @@ import java.net.URLConnection;
 public class CryptoTimestamp {
     private CryptoTimestampCallback callback;
     private Exception error;
+    String[] JSONTime;
+    String[] JSONValue;
 
     public CryptoTimestamp(CryptoTimestampCallback callback) {
         this.callback = callback;
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void refreshTimestamp(final String currency, final String timeStamp) {
+    public void refreshTimestamp(final String currency, final String timeIntervals) {
         new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
 
                 //passed variable to query to access info on specific currency
                 String YQL = String.format("%s", currency);
-                String TIME = String.format("%s", timeStamp);
+                String TIME = String.format("%s", timeIntervals);
 
                 //API query currently being used
-                String endpoint = String.format("https://min-api.cryptocompare.com/data/pricehistorical?fsym=%s&tsyms=USD&ts=%s", Uri.encode(YQL), Uri.encode(TIME));
-
+                String endpoint = String.format("https://min-api.cryptocompare.com/data/histohour?fsym=%s&tsym=USD&limit=%s&aggregate=12", Uri.encode(YQL), Uri.encode(TIME));
 
                 try {
                     URL url = new URL(endpoint);
@@ -73,6 +75,8 @@ public class CryptoTimestamp {
             @Override
             protected void onPostExecute(String s) {
 
+
+
                 if (s == null && error != null) {
                     callback.timeStampServiceFailure(error);
                     return;
@@ -80,8 +84,20 @@ public class CryptoTimestamp {
                 try {
                     JSONObject data = new JSONObject(s);
 
+
                     //needs to point at JSOn object - traversing the returned json data
-                    JSONObject queryResults = data.optJSONObject(currency);
+                    JSONArray queryResults = data.getJSONArray("Data");
+                    JSONTime = new String[queryResults.length()];
+                    JSONValue = new String[queryResults.length()];
+                    for (int i = 0; i < queryResults.length(); i++) {
+                        JSONObject mJSONObjProp = queryResults.getJSONObject(i);
+                        JSONTime[i] = mJSONObjProp.getString("time");
+                        JSONValue[i] = mJSONObjProp.getString("close");
+                    }
+                } catch (JSONException e) {
+                    callback.timeStampServiceFailure(e);
+                }
+                    //JSONObject queryResults = data.optJSONObject(currency);
 
                     // Option to check if there is an error with symbol - would only apply if we implemented
                     // a feature where a user types the symbol of the currency.
@@ -95,17 +111,10 @@ public class CryptoTimestamp {
                     //TODO: Check if there is any data that is empty when returned from API.
 
                     CurrentValue currentValue = new CurrentValue();
-                    currentValue.populate(queryResults);
+                    currentValue.populate(JSONTime, JSONValue);
 
                     //if connection is successful and there are no errors, pass data to callback success
                     callback.timeStampServiceSuccess(currentValue);
-
-
-                } catch (JSONException e) {
-                    callback.timeStampServiceFailure(e);
-                }
-
-
             }
 
         }.execute(currency);

@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     android:background="@color/popup">
 
+    <Button
+        android:id="@+id/halfYearBtn"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/graphView"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="17dp"
+        android:layout_toEndOf="@+id/thirtyDayBtn"
+        android:onClick="setToHalfYear"
+        android:text="6 Month"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/thirtyDayBtn"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/graphView"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/fiveDaysBtn"
+        android:onClick="setToThirtyDays"
+        android:text="30 Days"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/fiveDaysBtn"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/graphView"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="50dp"
+        android:onClick="setToFiveDays"
+        android:text="5 Days"
+        android:textSize="10sp" />
+
     <TextView
         android:id="@+id/popupTitle"
         android:layout_width="match_parent"
@@ -21,17 +57,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/graphView"
-        android:layout_below="@+id/popupTitle">
+        android:layout_below="@+id/popupTitle"
+        android:layout_marginTop="20dp">
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp">
+                android:paddingBottom="5dp">
 
                 <TextView
                     android:id="@+id/popupPriceTV"
@@ -39,14 +75,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp">
+                android:paddingBottom="5dp">
 
                 <TextView
                     android:id="@+id/marketCapTV"
@@ -54,14 +90,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp">
+                android:paddingBottom="5dp">
 
                 <TextView
                     android:id="@+id/circulatingSupplyTV"
@@ -69,14 +105,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp">
+                android:paddingBottom="5dp">
 
                 <TextView
                     android:id="@+id/dayVolumeTV"
@@ -84,15 +120,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/percChange1h"
@@ -100,39 +135,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp">
-
-                <TextView
-                    android:id="@+id/percChange24h"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp">
-
-                <TextView
-                    android:id="@+id/percChange7d"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </TableRow>
         </TableLayout>
 
 
@@ -143,7 +149,17 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:onClick="upDate" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="27dp" />
+
+    <TextView
+        android:id="@+id/graphInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/thirtyDayBtn"
+        android:layout_toEndOf="@+id/fiveDaysBtn"
+        android:text="Select Date Range :"
+        android:textColor="@color/mainTxtClr"
+        android:textStyle="bold" />
 
 </RelativeLayout>

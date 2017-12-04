@@ -43,23 +43,14 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
     private TextView percChange1d, percChange24h, percChange7d;
     private String currency;
     private int timeStampsAdded = 0;
-    GraphView currencyGraph;
-    LineGraphSeries<DataPoint> dataSeries;
-    Double graphY;
-    Date graphX;
-    arrayVariable aV = new arrayVariable();
-    Long sysTime = (System.currentTimeMillis()/1000) - 11259200;
-    Long sysTime1 = (System.currentTimeMillis()/1000) - 1572800;
-    Long sysTime2 = System.currentTimeMillis()/1000;
-    Date[] graphXarray = new Date[] {
-            new Date(sysTime*1000L), new Date(sysTime1*1000L), new Date(sysTime2*1000L)
-    };
-    String[] timeStamps = new String[] {
-            String.valueOf(sysTime*1000L),
-            String.valueOf(sysTime1*1000L),
-            String.valueOf(sysTime2*1000L)
-    };
-    double[] graphYArray = new double[] { 0,0,0 };
+    private GraphView currencyGraph;
+    private LineGraphSeries<DataPoint> dataSeries;
+    private Double graphY;
+    private Date graphX;
+    private double[] graphYArray = new double[] { 0,0,0 };
+    private arrayVariable aV = new arrayVariable();
+    private Integer pointsToPlot;
+
 
 
     @Override
@@ -68,18 +59,8 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
 
         setContentView(R.layout.popupwindow);
         initializeVariables();
-        //fillGraph();
 
-        aV.setVariable(graphYArray[0] == 0);
-
-        aV.setListener(new arrayVariable.ChangeListener() {
-            @Override
-            public void onChange() {
-                fillGraph();
-            }
-        });
     }
-
 
     public void initializeVariables() {
         apiService = new CryptoCompareServiceDisplay(this);
@@ -89,7 +70,6 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         circSupply = findViewById(R.id.circulatingSupplyTV);
         dayVolume = findViewById(R.id.dayVolumeTV);
         currencyPrice = findViewById(R.id.popupPriceTV);
-        percChange24h = findViewById(R.id.percChange24h);
         percChange1d = findViewById(R.id.percChange1h);
 
         currency = getIntent().getStringExtra("passedCurrency");
@@ -102,42 +82,62 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         int height = dm.heightPixels;
         getWindow().setLayout((int)(width*0.9), (int)(height*0.9));
 
-        timeStampService.refreshTimestamp(currency, timeStamps[0]);
-        timeStampService.refreshTimestamp(currency, timeStamps[1]);
-        timeStampService.refreshTimestamp(currency, timeStamps[2]);
+        //adjust api query to how many points to add to graph
+        pointsToPlot = 60;
+        //query API for historical data on each requested timeStamp
+        timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
 
         currencyGraph = (GraphView) findViewById(R.id.graphView);
-        currencyGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-        currencyGraph.getGridLabelRenderer().setNumHorizontalLabels(3);
+        currencyGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+        currencyGraph.getGridLabelRenderer().setHorizontalAxisTitle("");
+        currencyGraph.getGridLabelRenderer().setNumHorizontalLabels(pointsToPlot);
 
     }
 
+    public void setToFiveDays(View view) {
+        pointsToPlot = 5;
+        timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
+    }
 
-    public void upDate(View view) {
-        fillGraph();
+    public void setToThirtyDays(View view) {
+        pointsToPlot = 30;
+        timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
+    }
+
+    public void setToHalfYear(View view) {
+        pointsToPlot = 100;
+        timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
+    }
+    public void setToYear(View view) {
+        pointsToPlot = 365;
+        timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
     }
 
     public void timeStampServiceSuccess(CurrentValue currentValue) {
         aV.setVariable(false);
-        graphYArray[timeStampsAdded] = Double.valueOf(currentValue.getTimeStamp());
-        timeStampsAdded += 1;
-        //Toast.makeText(this, String.valueOf(graphYArray[0] + " " + graphYArray[1] + " " + graphYArray[2]), Toast.LENGTH_LONG).show();
+
+        String[] curVal = new String[currentValue.getTimeArray().length];
+        String[] timeStamps = new String[currentValue.getTimeArray().length];
+
+        curVal = currentValue.getValueArray();
+        timeStamps = currentValue.getTimeArray();
+
+        //pass JSON data into the graph to plot
+        fillGraph(timeStamps, curVal);
     }
 
-    public void fillGraph() {
+    public void fillGraph(String[] timeStamps, String[] values) {
         currencyGraph.removeAllSeries();
         dataSeries = new LineGraphSeries<DataPoint>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < timeStamps.length; i++) {
             // values of the currency over the last 3 days
-            graphY = graphYArray[i];
-            graphX = graphXarray[i];
-
-            //dates for the last 3 days based on time queried
-            dataSeries.appendData(new DataPoint(graphX, graphY), true, 3);
+            graphY = Double.valueOf(values[i]);
+            graphX = new Date(Long.valueOf(timeStamps[i])*1000);
+            dataSeries.appendData(new DataPoint(graphX, graphY), true, pointsToPlot);
         }
-        dataSeries.setDataPointsRadius(10);
-        dataSeries.setThickness(8);
-        dataSeries.setColor(Color.GRAY);
+        dataSeries.setDataPointsRadius(2);
+        dataSeries.setThickness(2);
+        dataSeries.setColor(Color.GREEN);
         dataSeries.setDrawDataPoints(true);
         currencyGraph.addSeries(dataSeries);
     }
@@ -152,10 +152,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         marketCap.setText("Market Cap : " + currentValue.getMarketCap());
         circSupply.setText("Circulating Supply : " + currentValue.getSupply());
         dayVolume.setText("24 Hour Volume : " + currentValue.getMaxSupply());
-        percChange24h.setText("Percent Change(24h) : " + currentValue.getChange());
         percChange1d.setText("Percent Change(Day) : " + currentValue.getOneDayChange());
-        //percChange7d.setText("Percent Change (Week) : " + currentValue.getOneWeekChange());
-
     }
 
     public void serviceFailure(Exception exception) {

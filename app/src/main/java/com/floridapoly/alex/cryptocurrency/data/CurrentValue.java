@@ -1,5 +1,6 @@
 package com.floridapoly.alex.cryptocurrency.data;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -22,7 +23,14 @@ public class CurrentValue implements JSONHandler {
     private String supply;
     private String oneDChange;
     private String timeStamp;
+    private String[] timeArray, valueArray;
 
+    public String[] getTimeArray() {
+        return timeArray;
+    }
+    public String[] getValueArray() {
+        return valueArray;
+    }
     public String getTimeStamp() {
         return timeStamp;
     }
@@ -106,5 +114,10 @@ public class CurrentValue implements JSONHandler {
         lastTradeId = data.optString("LASTTRADEID");
         exchange = data.optString("LASTMARKET");
         timeStamp = data.optString("USD");
+    }
+
+    public void populate(String[] time, String[] value) {
+        timeArray = time;
+        valueArray = value;
     }
 }
