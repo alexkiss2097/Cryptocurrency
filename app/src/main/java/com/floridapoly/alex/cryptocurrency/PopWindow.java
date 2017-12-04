@@ -42,7 +42,6 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
     private TextView marketCap, popupTitle, circSupply, dayVolume, currencyPrice;
     private TextView percChange1d, percChange24h, percChange7d;
     private String currency;
-    private int timeStampsAdded = 0;
     private GraphView currencyGraph;
     private LineGraphSeries<DataPoint> dataSeries;
     private Double graphY;
@@ -83,14 +82,14 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
         getWindow().setLayout((int)(width*0.9), (int)(height*0.9));
 
         //adjust api query to how many points to add to graph
-        pointsToPlot = 60;
+        pointsToPlot = 36;
         //query API for historical data on each requested timeStamp
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
 
         currencyGraph = (GraphView) findViewById(R.id.graphView);
         currencyGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         currencyGraph.getGridLabelRenderer().setHorizontalAxisTitle("");
-        currencyGraph.getGridLabelRenderer().setNumHorizontalLabels(pointsToPlot);
+
 
     }
 
@@ -100,15 +99,11 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
     }
 
     public void setToThirtyDays(View view) {
-        pointsToPlot = 30;
+        pointsToPlot = 36;
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
     }
 
-    public void setToHalfYear(View view) {
-        pointsToPlot = 100;
-        timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
-    }
-    public void setToYear(View view) {
+    public void setToOneYear(View view) {
         pointsToPlot = 365;
         timeStampService.refreshTimestamp(currency, pointsToPlot.toString());
     }
@@ -128,6 +123,7 @@ public class PopWindow extends Activity implements CryptocurrencyCallback, Crypt
 
     public void fillGraph(String[] timeStamps, String[] values) {
         currencyGraph.removeAllSeries();
+        currencyGraph.getGridLabelRenderer().setNumHorizontalLabels(pointsToPlot);
         dataSeries = new LineGraphSeries<DataPoint>();
         for (int i = 0; i < timeStamps.length; i++) {
             // values of the currency over the last 3 days

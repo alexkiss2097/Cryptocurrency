@@ -7,16 +7,16 @@
     android:background="@color/popup">
 
     <Button
-        android:id="@+id/halfYearBtn"
+        android:id="@+id/oneYear"
         android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_above="@+id/graphView"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="17dp"
         android:layout_toEndOf="@+id/thirtyDayBtn"
-        android:onClick="setToHalfYear"
         android:background="@drawable/button_selector"
-        android:text="6 Months"
+        android:onClick="setToOneYear"
+        android:text="1 Year"
         android:textSize="10sp" />
 
     <Button
